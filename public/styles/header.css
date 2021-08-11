@@ -1,0 +1,10 @@
+header {
+  height: 400px;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #e96240d5; 
+  background-image: url("/images/black-twill.png");
+}

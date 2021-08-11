@@ -1,0 +1,23 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  height: 120px;
+  width: 100;
+  background-color: #4056a1;
+  color: #ffff;
+}
+.nav-elements {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
+
+.nav-new-tweet {
+  padding-top:10px;
+  font-family: "Source Sans Pro";
+}
+
