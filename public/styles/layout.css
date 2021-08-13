@@ -5,6 +5,7 @@
  */
 html {
   box-sizing: border-box;
+  font-family: "Source Sans Pro";
 }
 *,
 *:before,
@@ -16,23 +17,21 @@ html {
  * Global layout stuff
  */
 
-body {
-  color: #545149;
-  background-color: #f4f1ec;
-  font-size: 24px;
-  font-family: "Source Sans Pro", sans-serif;
-}
-nav {
-  font-family: "Bungee";
-}
+ main {
+   width:90%;
+   margin: auto;
+ }
 
-.container {
-  width: 90%;
-  background-color: #f4f1ec;
-  text-align: center;
-   background-color: #f4f1ec;
-   margin: 1.5em auto;
-}
+ p {
+   padding:0;
+   margin:0;
+ }
+
+ h4 {
+   padding:0;
+   margin:0;
+ }
+
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions

@@ -1,0 +1,44 @@
+.tweet {
+  padding: 20px;
+  margin-top: 5px;
+  background: white;
+  border: 3px black solid;
+}
+
+.tweet:hover {
+  box-shadow: 5px 5px plum;
+}
+
+.tweet-header-box {
+  display:flex;
+  align-items: center;
+}
+
+.tweet-header-element {
+  padding: 8px;
+}
+
+.tweet-header-icon {
+  height: 100px;
+}
+
+.tweeter-handle {
+  font-size: 15px;
+}
+
+.tweet-content {
+  margin: 30px;
+  font-weight: 600;
+}
+
+.header-tweet {
+display: flex;
+justify-content: space-between;
+}
+
+.tweet-footer {
+  font-size: small;
+  display: flex;
+  justify-content: space-between;
+}
+

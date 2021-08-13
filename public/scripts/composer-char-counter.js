@@ -1,29 +1,17 @@
-// //for character count
-// $(document).ready(function() {
-//   // --- our code goes here ---
-// });
-// console.log(document).ready
+//for character count
+$(document).ready(function () {
+  // console.log("ready");
+  const counter = $(".counter");
 
-$(document).ready(function() {
-
-  // create reference to the textarea
-  const $textArea = $("#tweet-text");
-
-  // fire keyup event when user types in the textarea
-  $textArea.on('keyup', function() {
-
-    // update counter to show remaining characters
-    let $counter = $('#counter');
-    $counter.val(140 - this.value.length);
-
-      // if user has no characters left, add class to make the counter text red
-      if ($counter.val() <= 0) {
-        $counter.addClass('no-more-chars');
-      } else {
-        // revert counter text to normal colour if user deletes enough characters
-        $counter.removeClass('no-more-chars');
-      }      
+  //use keyup to track characters pressed
+  $("#tweet-text").on("keyup", function () {
+    counter.val(140 - $(this).val().length);
+  
+    if (!counter.hasClass("too-much-text") && counter.val() < 0) {
+      counter.addClass("too-much-text");
+    } else if (counter.hasClass("too-much-text") && counter.val() >0){
+      counter.removeClass("too-much-text");
+    }
   });
 
-
-});
+  });

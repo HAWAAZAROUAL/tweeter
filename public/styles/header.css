@@ -1,6 +1,7 @@
 header {
   height: 400px;
-  width: 100vw;
+  width: 100%;
+  padding: 120px 0px 0px 0px;
   display: flex;
   flex-direction: column;
   justify-content: center;
