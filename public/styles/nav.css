@@ -9,6 +9,7 @@ nav {
   width: 100vw;
   background-color: #4056a1;
   color: #ffff;
+  z-index: 1000;
 }
 
 .nav-title {

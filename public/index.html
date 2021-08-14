@@ -70,7 +70,7 @@
     <main class="container">
       <section class="new-tweet">
         <!-- <h2>Compose Tweet</h2> -->
-        <form class="tweet-form" method="POST" action="/tweets">
+        <form class="tweet-form" method="POST" action="/tweets" id="new-tweet-form">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text" class="tweet-input-space"></textarea>
           <div class="tweet-submit-counter">
@@ -98,6 +98,7 @@
           </div>
         </footer>
       </section>
+      <div id="tweets-container"></div>
     </main>
   </body>
 </html>

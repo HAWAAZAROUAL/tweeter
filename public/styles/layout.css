@@ -32,6 +32,11 @@ html {
    margin:0;
  }
 
+ h2 {
+   padding:0;
+   margin: 0;
+ }
+
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions

@@ -1,11 +1,12 @@
 header {
-  height: 400px;
+  height: 540px;
   width: 100%;
-  padding: 120px 0px 0px 0px;
+  padding: 140px 0px 0px 0px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: white;
   background-color: #e96240d5; 
   background-image: url("/images/black-twill.png");
 }

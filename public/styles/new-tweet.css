@@ -28,7 +28,7 @@
 }
 
 .new-tweet-button:hover {
-cursor: pointer;
+/* cursor: pointer; */
 padding-left: 13px;
 padding-right: 13px;
 }
