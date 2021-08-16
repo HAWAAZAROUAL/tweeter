@@ -1,0 +1,58 @@
+/* media queries for desktop styles */
+
+@media only screen and (min-width: 1024px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  nav {
+    background-color: rgb(64, 86, 161);
+    position: fixed;
+    color: #ffefd7;
+    padding: 1.5em 0 2em 0;
+  }
+
+  .fa-angle-double-down{
+    color: #ffefd7;
+  }
+
+
+  header img {
+    max-width: 70%;
+  }
+
+  .main-container-flex {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .tweets-container .tweetText {
+    font-size: 30px;
+  }
+
+  .top-header {
+    padding-top: 50px;
+    margin: 10em 2em 0 4em;
+    height: 300px;
+    width: 400px;
+ }
+
+ .top-header img {
+  width: 200px; 
+}
+
+
+ .container {
+   padding-left: 30px;
+   padding-right: 30px;
+   width: 50%;
+ }
+
+ .new-tweet {
+  margin-top: 110px;
+ }
+
+
+}

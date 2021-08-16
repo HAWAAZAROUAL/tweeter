@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!--Importing Fonts Bungee and Source Sans Pro-->
+    <!--Fonts Bungee and Source Sans Pro-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,600;1,300;1,600&display=swap"
@@ -22,11 +22,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         
         <!-- External CSS -->
-        <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-        type="text/css"
-        />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css"/>
         
         <!-- App CSS -->
         <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
@@ -34,9 +30,11 @@
         <link rel="stylesheet" href="/styles/header.css" type="text/css" />
         <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
         <link rel="stylesheet" href="/styles/tweets.css" type="text/css" />
+        <link rel="stylesheet" href="/styles/media-queries.css" type="text/css" />
         
         <!-- External JS -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js" integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         
         <!-- App JS -->
         <script type="text/javascript" src="/scripts/client.js"></script>
@@ -44,61 +42,56 @@
         
         <!-- Meta Information -->
         <title>Tweeter - Home Page</title>
+        <!-- disable viewport zooming -->
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
       </head>
       
       <body>
-    <!-- Top nav bar (fixed) -->
+    
+        <!-- Top nav bar (fixed) -->
     <nav>
-      <span class="nav-title">tweeter</span>
-   <div class="nav-newtweet-right">
+      <span id="header-logo">tweeter</span>
+   <div id="nav-newtweet-right">
       <span class="write-new-tweet"><b>Write</b> a new tweet </span>
       <i class="fas fa-angle-double-down"></i>
     </div> 
   </nav>
     
+  <div class="main-container-flex">
+    <!--header with profile pic and name-->
+  </div>
     <header class= "header-profile">
-      <div>
+      <div class="flex-container">
           <img src="/images/profile-hex.png"> 
-      </div>
-      <br>
-      <div>
+          <br>
           <h2 class="profile-name">Ficus Lyratta</h2>
+        </div>
+      </header>
     </div>
-  </header>
 
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
-        <!-- <h2>Compose Tweet</h2> -->
-        <form class="tweet-form" method="POST" action="/tweets" id="new-tweet-form">
-          <label for="tweet-text">What are you humming about?</label>
-          <textarea name="text" id="tweet-text" class="tweet-input-space"></textarea>
+        <h2>New Tweet</h2>
+
+        <!--error messages dynamically made here-->
+        <div class= "errors">
+          <p></p>
+        </div>
+
+
+        <form class="tweet-form" method="POST" action="/tweets/" id="new-tweet-form">
+          <textarea name="text" id="tweet-text" placeholder="What's up?"></textarea>
           <div class="tweet-submit-counter">
-            <button type="submit" class="new-tweet-button">Tweet</button>
-            <output name="counter" class="counter" for="tweet-text">140</output>
+            <button type="submit">Tweet</button>
+            <output name="counter" class="counter" id="counter" for="tweet-text">140</output>
           </div>
         </form>
+
+        <!--tweet container-->
+        <section class="tweets-container"></section>
       </section>
-      <section class= "tweet">
-        <header class="header-tweet">
-          <div class="tweet-header-box">
-            <i class="far fa-grin-beam"></i>
-            <p class="tweet-header-element">Monster Haworthia</p>
-          </div>
-          <p class="tweeter-handle">@MissMonster</p>
-        </header>
-        <article class="tweet-content">I love plants</article>
-        <hr>
-        <footer class="tweet-footer">
-          <p class="tweet-date">5 days ago</p>
-          <div class="tweet-icons">
-            <i class="fas fa-solid fa-flag icon-hover"></i>
-            <i class="fas fa-solid fa-retweet icon-hover"></i>
-            <i class="fas fa-solid fa-heart icon-hover"></i>
-          </div>
-        </footer>
-      </section>
-      <div id="tweets-container"></div>
+
     </main>
   </body>
 </html>

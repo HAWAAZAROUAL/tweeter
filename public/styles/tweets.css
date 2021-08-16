@@ -1,0 +1,43 @@
+article {
+  border: solid 3px #4056A1;
+  border-radius: 10px;
+  margin: 3em 0 3em 0;
+  padding: 0 1.5em 1.5em 1.5em;
+  font-size: 1.2em;
+  overflow-x: hidden;
+  background-color: #e7edff;
+}
+
+article header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+p.username {
+  color: #4056A1;
+  opacity: 0.45;
+}
+
+article main {
+  padding-bottom: 0.8em;
+  border-bottom: solid 2px #4056A1;
+  margin-bottom: 0px;
+  text-align: left;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 0 2.4em 0 2.4em;
+}
+
+footer p {
+  font-size: 0.7em;
+}
+
+footer div i {
+  margin-left: 0.5em;
+}
+

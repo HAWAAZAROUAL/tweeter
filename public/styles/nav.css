@@ -2,32 +2,69 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
+  padding: 2em 0 1.5em 0;
   top: 0;
-  box-sizing: border-box;
   height: 120px;
   width: 100vw;
   background-color: #4056a1;
-  color: #ffff;
-  z-index: 1000;
+  color:rgb(248, 248, 250);
+  position: fixed;
+  z-index: 2;
 }
 
-.nav-title {
-  align-self: center;
-  padding: 0em 1.5em 0em 1.5em;
-  font-family: "Bungee", sans-serif;
+nav span {
+  margin-left:1.5em;
+  margin-right: 1.5em;
+  font-size: 20px;
 }
-.nav-newtweet-right {
-  display: flex;
+
+.fa-angle-double-down {
+  display:flex;
+  align-items: column;
+  justify-content: center;
+  padding-top: 1rem;
+  color: rgb(243, 244, 247);
+}
+
+.fa-angle-double-down:hover {
+color:rgb(230,176,206);
+transition: color ease-in-out 0.4s;
+}
+
+#header-logo {
+  font-family: "Bungee", cursive;
+  font-size: 1.8em;
+}
+
+#nav-new-tweet {
+  display:flex;
   flex-direction: column;
   align-items: center;
-  font-family: "Source Sans Pro";
-  padding: 0em 1.5em 0em 1.5em;
+  margin-right: 1.5em;
 }
 
-.dbl-arrow {
-  align-self: center;
-  padding-top:10px;
-  font-family: "Source Sans Pro";
+#nav-new-tweet i {
+  padding-top: 10px;
+}
+
+.header-profile {
+padding-top: 120px;
+z-index: 1;
+display:flex;
+flex-direction:column;
+align-items: center;
+width: 100%;
+background-image: url("../images/diamond-upholstery.png");
+background-color: #9fafe4;
+}
+
+.header-profile img {
+  width: 120px;
+}
+
+.flex-container {
+  display:flex;
+  align-items: center;
+  flex-direction: column;
 }
 

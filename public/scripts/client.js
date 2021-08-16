@@ -1,102 +1,92 @@
 /*
  * Client-side JS logic goes here
  * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
+ * Reminder: Use (and do all your DOM work in) jQuery's
+ * document ready function
  */
 
-// $(document).ready(function() {
 
-// });
-// loop through tweets
-// then for each tweet the function createTweet is called
-// then add the new tweet- prepend
+// Most recent tweet is at the top of the page -Use prepend.
+const renderTweets = function(tweets) {
+  $('.tweets-container').empty();
 
-const createTweetElement = function (object) {
-  const name = object["name"]["name"];
-  const avatar = object["user"]["avatars"];
-  const handle = object["user"]["handle"];
-  const content = object["content"]["text"];
-  const timestamp = timeago.format(object["created_at"]);
-
-  const tweet = $(`
-    <section class= "tweet">
-        <header class="header-tweet">
-          <div class="tweet-header-box">
-            <i class="far fa-grin-beam"></i>
-            <img src=${avatar}></img>
-            <p class="tweet-header-element">${name}</p>
-          </div>
-          <p class="tweeter-handle">${handle}</p>
-        </header>
-        <article class="tweet-content">${content}</article>
-        <hr>
-        <footer class="tweet-footer">
-          <p class="tweet-date">${timestamp}</p>
-          <div class="tweet-icons">
-            <i class="fas fa-solid fa-flag icon-hover"></i>
-            <i class="fas fa-solid fa-retweet icon-hover"></i>
-            <i class="fas fa-solid fa-heart icon-hover"></i>
-          </div>
-        </footer>
-      </section>
-    `);
-  return tweet;
-};
-
-// Fake data taken from initial-tweets.json
-const data = [
-  {
-    user: {
-      name: "Newton",
-      avatars: "https://i.imgur.com/73hZDYK.png",
-      handle: "@SirIsaac",
-    },
-    content: {
-      text: "If I have seen further it is by standing on the shoulders of giants",
-    },
-    created_at: 1461116232227,
-  },
-  {
-    user: {
-      name: "Descartes",
-      avatars: "https://i.imgur.com/nlhLi3I.png",
-      handle: "@rd",
-    },
-    content: {
-      text: "Je pense , donc je suis",
-    },
-    created_at: 1461113959088,
-  },
-];
-
-//   //loads the tweets -- EDIT THIS TO MATCH VARIABLES
-//  const loadTweets = function () {
-//   $.ajax({
-//     method: 'GET',
-//     url: '/tweets/',
-//     dataType: 'JSON'
-//   }) //callback function to get the response back and iterate through the objects
-//     .then(function (response) {
-//       $('#tweets-container').empty()
-//       renderTweets(response)
-//     })
-// }
-// loadTweets();
-const renderTweets = function (tweets) {
-  for (let tweet of tweets) {
-    $("#tweets-container").prepend(createTweetElement(tweet));
+  for (const tweet of tweets) {
+    $('.tweets-container').prepend(createTweetElement(tweet));
   }
-  renderTweets(data);
-
-  $("#new-tweet-form").submit(function (event) {
-    event.preventDefault();
-    $.post("./server/data-files/initial-tweets.json", function (data) {
-      console.log(data);
-    });
-  });
 };
 
-// console.log($tweet); // to see what it looks like
-// $(document).ready(function() {
-//     $("#tweets-container").append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
-// });
+
+// Set up structure of a tweet. use time ago for the timestamp
+const createTweetElement = function(tweetObj) {
+  const $name = tweetObj.user.name;
+  const $username = tweetObj.user.handle;
+  const $text = tweetObj.content.text;
+  const $daysAgo = timeago.format(tweetObj.created_at);
+
+  //icons from fontAwesome
+  const $reactionIcons = [
+    $('<i>').addClass('fas fa-flag'),
+    $('<i>').addClass('fas fa-retweet'),
+    $('<i>').addClass('fas fa-heart')
+  ];
+
+  // create new HTML tags to contain tweet content
+  const $htmlHeader = $('<header>');
+  const $htmlP = $('<p>');
+  const $htmlFooter = $('<footer>');
+  const $htmlTweet = $('<article>');
+  const $htmlIcons = $('<div>').append($reactionIcons[0], $reactionIcons[1], $reactionIcons[2]);
+
+  $htmlHeader.append(`<p> ☺  ${$name}</p>`).append(`<p>${$username}</p>`);
+  $htmlP.text($text).addClass('tweetText');
+  $htmlFooter.append(`<p>${$daysAgo}</p>`);
+  $htmlFooter.append($htmlIcons);
+
+  $htmlTweet.append($htmlHeader, $htmlP, $htmlFooter);
+  return $htmlTweet;
+};
+
+// Doc.ready runs when the DOM is loaded
+$(document).ready(function() {
+
+  //load previously created tweets.
+  const loadTweets = function() {
+    $.get("/tweets/", function(data) {
+      renderTweets(data);
+      console.log("Tweets were loaded.");
+    });
+  };
+  loadTweets();
+
+  // Add the function to the tweet button.
+  $('#tweet-text').parent().submit(function(event) {
+    console.log("Handler for .submit() called.");
+    event.preventDefault();
+
+    const tweetTextVal = $('#tweet-text').val();
+
+    // for when there is an error-slidedown. empty or exceed.
+    if (tweetTextVal.length === 0) {
+      $('.errors').slideDown("slow");
+      $('.errors').children().text('Your tweet is empty. Write something!');
+    } else if (tweetTextVal.length > 140) {
+      $('.errors').slideDown("slow");
+      $('.errors').children().text('The character count is exceeded.');
+    } else {
+
+      const serializedData = $(this).serialize();
+
+      $('.errors').slideUp("slow");
+
+      $('.errors').children().text('');
+
+      $('#tweet-text').val('');
+
+      $('#counter').val('140');
+      
+      $.post('/tweets/', serializedData).then(loadTweets);
+    }
+  });
+});
+
+//for serialized data: slide up if there's no error, clear message when submitted, clear textarea when submitted, reset counter after submission. post gives a promise with loadtweets as the callback.

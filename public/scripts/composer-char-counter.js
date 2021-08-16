@@ -1,18 +1,20 @@
-//for character count
-$(document).ready(function () {
-  // console.log("ready");
-  // const counter = $(".counter");
 
-  //use keyup to track characters pressed
-  $("#tweet-text").on("keyup", function () {
-    const counter = $("this").siblings(".tweeter-submit-counter").children(".counter")
-    counter.val(140 - $(this).val().length);
-  
-    if (!counter.hasClass("too-much-text") && counter.val() < 0) {
-      counter.addClass("too-much-text");
-    } else if (counter.hasClass("too-much-text") && counter.val() >0){
-      counter.removeClass("too-much-text");
+
+$(document).ready(function() {
+
+  // make a reference to the textarea. initiate keyup event.
+  const $textArea = $("#tweet-text");
+  $textArea.on('keyup', function() {
+
+    // track the characters used.
+    let $counter = $('#counter');
+    $counter.val(140 - this.value.length);
+
+    // no characters- make the counter red - use addClass
+    if ($counter.val() < 0) {
+      $counter.addClass('no-more-chars');
+    } else {
+      $counter.removeClass('no-more-chars');
     }
   });
-
-  });
+});
