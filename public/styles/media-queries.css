@@ -14,7 +14,7 @@
   }
 
   .fa-angle-double-down{
-    color: goldenrod;
+    color: white;
   }
 
 
@@ -52,18 +52,6 @@
 
  .new-tweet {
   margin-top: 110px;
- }
-
- .fa-flag {
-  color: goldenrod
- }
-
- .fa-retweet {
-  color: goldenrod
- }
-
- .fa-heart {
-  color: goldenrod
  }
 
 }

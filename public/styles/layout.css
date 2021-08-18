@@ -15,18 +15,6 @@ html {
 /*
  * Global layout stuff
  */
-header {
-  height: 540px;
-  width: 100%;
-  padding: 10px 0px 0px 0px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  color: white;
-  background-color: #e96240d5; 
-  /* background-image: url("/images/black-twill.png"); */
-}
 
  body {
    color:#545149;
@@ -34,9 +22,7 @@ header {
    font-size: 18px;
    font-family: "Source Sans Pro", sans-serif;
  }
- #tweetText {
-   background-color:#e96240d5 ;
- }
+
 
  main {
    width:90%;
