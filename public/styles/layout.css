@@ -18,11 +18,11 @@ html {
 header {
   height: 540px;
   width: 100%;
-  padding: 140px 0px 0px 0px;
+  padding: 10px 0px 0px 0px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
   color: white;
   background-color: #e96240d5; 
   /* background-image: url("/images/black-twill.png"); */
@@ -33,6 +33,9 @@ header {
    background-color: lavender;
    font-size: 18px;
    font-family: "Source Sans Pro", sans-serif;
+ }
+ #tweetText {
+   background-color:#e96240d5 ;
  }
 
  main {

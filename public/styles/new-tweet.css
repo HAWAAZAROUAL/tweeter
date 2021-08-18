@@ -36,7 +36,6 @@ main textarea {
   border-radius: 15px;
   margin-bottom: 4%;
   resize: none;
-  font-style: italic;
   max-width: 100%;
   padding: 10px;
 }
