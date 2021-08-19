@@ -42,6 +42,10 @@ footer div i {
   margin-left: 0.5em;
 }
 
+article:hover {
+  box-shadow: 0 0 16px #8A9BD0;
+}
+
 .fa-flag:hover {
   color: orange;
   cursor: pointer

@@ -19,6 +19,7 @@ const renderTweets = function(tweets) {
 // Set up structure of a tweet. use time ago for the timestamp
 const createTweetElement = function(tweetObj) {
   const $name = tweetObj.user.name;
+  const $avatars= tweetObj.user.avatars;
   const $username = tweetObj.user.handle;
   const $text = tweetObj.content.text;
   const $daysAgo = timeago.format(tweetObj.created_at);
@@ -30,6 +31,8 @@ const createTweetElement = function(tweetObj) {
     $('<i>').addClass('fas fa-heart')
   ];
 
+ 
+
   // create new HTML tags to contain tweet content
   const $htmlHeader = $('<header>');
   const $htmlP = $('<p>');
@@ -37,7 +40,7 @@ const createTweetElement = function(tweetObj) {
   const $htmlTweet = $('<article>');
   const $htmlIcons = $('<div>').append($reactionIcons[0], $reactionIcons[1], $reactionIcons[2]);
 
-  $htmlHeader.append(`<p> ☺  ${$name}</p>`).append(`<p>${$username}</p>`);
+  $htmlHeader.append(`<p> <img src="${$avatars}"></img> ${$name}</p>`).append(`<p>${$username}</p>`);
   $htmlP.text($text).addClass('tweetText');
   $htmlFooter.append(`<p>${$daysAgo}</p>`);
   $htmlFooter.append($htmlIcons);
@@ -46,21 +49,19 @@ const createTweetElement = function(tweetObj) {
   return $htmlTweet;
 };
 
+//load previously created tweets.
+const loadTweets = function() {
+  $.get("/tweets/", function(data) {
+    renderTweets(data);
+  });
+};
+loadTweets();
+
 // Doc.ready runs when the DOM is loaded
 $(document).ready(function() {
 
-  //load previously created tweets.
-  const loadTweets = function() {
-    $.get("/tweets/", function(data) {
-      renderTweets(data);
-      console.log("Tweets were loaded.");
-    });
-  };
-  loadTweets();
-
   // Add the function to the tweet button.
   $('#tweet-text').parent().submit(function(event) {
-    console.log("Handler for .submit() called.");
     event.preventDefault();
 
     const tweetTextVal = $('#tweet-text').val();
